@@ -76,7 +76,7 @@ const ViewRecipe = () => {
       </div>
     );
 
-  // 📝 METHOD PAGE VIEW
+
   if (isMethodPage) {
     return (
       <Container className="py-4">
@@ -96,7 +96,7 @@ const ViewRecipe = () => {
     );
   }
 
-  // 👨‍🍳 FULL RECIPE VIEW
+
   return (
     <div className="view-recipe-container my-5 mx-auto px-3 px-md-0">
       <div className="d-flex align-items-center mb-4">
@@ -120,13 +120,18 @@ const ViewRecipe = () => {
             className="mb-4 shadow-sm view-recipe-image"
           />
           <div className="ingredients-list">
-            <h5 className="mb-3 fw-semibold">Ingredients</h5>
-            {ingredients.map((item, i) => (
-              <p className="mb-1 ingredient-item" key={i}>
-                <strong>•</strong> {item}
-              </p>
-            ))}
-          </div>
+  <h5 className="mb-3 fw-semibold">Ingredients</h5>
+  {(recipe?.ingredients
+    ?.split(/[\n,]+/)
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0) || []
+  ).map((item, i) => (
+    <p className="mb-1 ingredient-item" key={i}>
+      <strong>•</strong> {item}
+    </p>
+  ))}
+</div>
+
         </Col>
 
         <Col md={8}>
